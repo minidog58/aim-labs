@@ -42,10 +42,9 @@ class Target:
             self.size -= self.GROWTH_RATE
 
     def draw(self, WINDOW):
-        pygame.draw.circle(WINDOW,self.COLOR[0], (self.x, self.y), self.size)#draw the target on the window with the obj values color, (x,y) , size
-        pygame.draw.circle(WINDOW,self.COLOR[1], (self.x, self.y), self.size * 0.8)
-        pygame.draw.circle(WINDOW,self.COLOR[0], (self.x, self.y), self.size * 0.6)
-        pygame.draw.circle(WINDOW,self.COLOR[1], (self.x, self.y), self.size * 0.4)
+        for i in range(4):
+            pygame.draw.circle(WINDOW,self.COLOR[i % 2], (self.x, self.y), self.size * (1- i * 0.2))#draw the target on the window with the obj values color, (x,y) , size
+       
 
     def targetHit(self, x , y):
         distance = math.sqrt((self.x - x)**2 + (self.y - y)**2)
